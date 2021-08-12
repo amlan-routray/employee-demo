@@ -1,0 +1,114 @@
+
+
+.App {
+  text-align: center;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 5px;
+  text-align: left;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog {
+  width: 400px;
+  height: 160px;
+  background-color: white;
+  padding: 4px;
+}
+
+.dialog button {
+  width: 100%;
+  height: auto;
+  color: white;
+  background-color: rgb(120, 85, 145);
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.myheader {
+  margin-left: 10%;
+  margin-top: 8px;
+  font-size: larger;
+  color: white;
+}
+
+.docker {
+  border-color: black;
+}
+
+a,button{
+  text-decoration: none;
+  background-color: rgb(120, 85, 145);
+  color: white;
+  border-radius: 4px;
+  padding: 6px;
+  font-size: small;
+  cursor: pointer;
+  border: 0px;
+  height: 29px;
+  font-weight: normal;
+}
+
+.search-box{
+  height: 24px;
+  width: 240px;
+  border-radius: 4px;
+  font-size: small;
+  justify-self: left;
+  margin: 4px;
+}
+
+th{
+  background-color: rgb(120, 85, 145);
+  color: white;
+}
+
+td,td>input{
+  background-color: rgb(226, 219, 231);
+}
+
+td>input{
+  border: 0;
+}
+
+form{
+  padding: 0 16px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  width: 240px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+form>p,input[type=submit]{
+  color:white;
+  background-color:rgb(120, 85, 145) ;
+  padding: 8px 4px;
+  text-align: center;
+  margin: 0;
+  border: 0;
+}
+
+
+
+
