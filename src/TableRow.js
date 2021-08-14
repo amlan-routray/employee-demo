@@ -11,14 +11,15 @@ export default function TableRow(emp) {
     
     const editHandler = () => {
       console.log('Edit Handler')
-        buttonText==='Edit'?setButtonText('Save'):setButtonText('Edit');
-        setIsReadOnly(prev => !prev)
-        emp.handleEdit({
-            id:emp.id,
-            name:nameRef.current.value,
-            email:emailRef.current.value,
-            username:usernameRef.current.value
-        })
+      setIsReadOnly(prev => !prev)
+      buttonText==='Edit'?setButtonText('Save'):setButtonText('Edit'); 
+      
+      buttonText==='Save' && emp.handleEdit({
+        id:emp.id,
+        name:nameRef.current.value,
+        email:emailRef.current.value,
+        username:usernameRef.current.value
+      })
     }
 
     return (
