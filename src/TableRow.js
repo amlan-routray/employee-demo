@@ -10,6 +10,7 @@ export default function TableRow(emp) {
     const usernameRef = useRef();
     
     const editHandler = () => {
+      console.log('Edit Handler')
         buttonText==='Edit'?setButtonText('Save'):setButtonText('Edit');
         setIsReadOnly(prev => !prev)
         emp.handleEdit({

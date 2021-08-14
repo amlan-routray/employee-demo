@@ -7,7 +7,7 @@ export default function EmpList(props) {
   const searchRef = useRef();
   const history = useHistory();
   const searchQuery = new URLSearchParams(location.search);
-  
+  console.log(props)
 
   const data = searchQuery.get("query")
     ? props.list.filter((emp) =>

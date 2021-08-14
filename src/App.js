@@ -6,13 +6,17 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import EmpAdd from "./EmpAdd/EmpAdd";
-import EmpList from "./EmpList/EmpList";
-import { useEffect, useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import EmpDetails from "./EmpDetails";
 
 function App() {
+
+  // Code Splitting in action
+  const EmpAdd = React.lazy(() => import ("./EmpAdd/EmpAdd")) 
+  const EmpList = React.lazy(() => import ("./EmpList/EmpList")) 
+
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
@@ -42,6 +46,7 @@ function App() {
   };
 
   const handleEdit = employee => {
+    console.log(employee)
     const newEmployeeList = employees.map(emp => emp.id === employee.id ? employee : emp);
     setEmployees(newEmployeeList);
   }
@@ -85,24 +90,26 @@ function App() {
           </NavLink>
         </div>
       </div>
-      <Switch>
-        <Route path="/" exact>
-          <Redirect to="/emplist" />
-        </Route>
-        <Route path="/emplist">
-          <EmpList
-            list={employees}
-            removeEmployee={(id) => removeEmployee(id)}
-            handleEdit={employee => handleEdit(employee)}
-          />
-        </Route>
-        <Route path="/empadd">
-          <EmpAdd addEmployee={(employee) => addEmployee(employee)} />
-        </Route>
-        <Route path="/empdetails/:id">
-          <EmpDetails list={employees}/>
-        </Route>
-      </Switch>
+      <React.Suspense fallback={<p>Loading please...</p>}>
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="/emplist" />
+          </Route>
+          <Route path="/emplist">
+            <EmpList
+              list={employees}
+              removeEmployee={(id) => removeEmployee(id)}
+              handleEdit={employee => handleEdit(employee)}
+            />
+          </Route>
+          <Route path="/empadd">
+            <EmpAdd addEmployee={(employee) => addEmployee(employee)} />
+          </Route>
+          <Route path="/empdetails/:id">
+            <EmpDetails list={employees}/>
+          </Route>
+        </Switch>
+      </React.Suspense>
     </BrowserRouter>
   );
 }
